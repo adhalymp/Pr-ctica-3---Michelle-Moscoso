@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<!--
+    Author: Michelle Moscoso
+    Date: 27/10/2022
+
+    Filename: Práctica Resolución de problemas sobre Javascript con HTML
+   -->
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <title>Resolución de problemas sobre Javascript con HTML</title>
+</head>   
+<body>
+    <h1>Resolución de problemas sobre Javascript con HTML</h1>
+<h3>Ejercicio 1</h3>
+    <p>Grados Centígrados: <input id="num1" oninput="convertirGradosCentigradosAGradosFahrenheint()"></p>
+    <h4>Resultado:</h4>
+    <p id = "res1"></p>
+<h3>Ejercicio 2</h3>
+    <p>Ingresar número: <input  id="num2" oninput="calcularPorcentaje()"></p>    
+    <h4>Resultado:</h4>       
+    <p id = "res2"></p>
+<h3>Ejercicio 3</h3>
+    <h5>Crear tabla:</h5>
+    <p>Número de filas: <input id="numfil"></p>
+    <p>Número de columnas: <input id="numcol"></p>
+    <p>Generar la Tabla  <input type="button" id="generador" onclick="generarTablaHTML()"></p>    
+</body>
+   <script>
+//Ejercicio 1   
+    function convertirGradosCentigradosAGradosFahrenheint() {
+        let gradosC = document.getElementById("num1").value
+        let gradosF = 0;
+        gradosF = 32 + ( 9 * gradosC / 5)
+    if(gradosF >= 212){
+            document.getElementById("res1").innerHTML="Punto de ebullición del agua";
+}   else{
+        if(gradosF >= 98.6){
+            document.getElementById("res1").innerHTML="Temperatura del cuerpo humano";
+}   else 
+    if(gradosF >= 77){
+            document.getElementById("res1").innerHTML="Temperatura ambiente";
+} else{
+    if(gradosF >= 32){
+            document.getElementById("res1").innerHTML="Punto de congelación del agua";
+} else{
+            document.getElementById("res1").innerHTML="Cero absoluto";
+
+}  
+}  
+}
+}
+//Ejercicio 2
+    function calcularPorcentaje(){
+        var valor = parseInt (document.getElementById("num2").value)
+    if(valor < 500){
+        var num3 = valor/2
+        result = valor + num3
+        document.getElementById("res2").innerHTML= result
+}
+    else{
+        var result2 = valor - (valor * 0.07)
+        document.getElementById("res2").innerHTML = result2
+}
+}
+//Ejercicio 3
+    function generarTablaHTML(){
+        var fil = document.getElementById("numfil").value
+        var col = document.getElementById("numcol").value
+        var body = document.getElementsByTagName("body")[0]
+        var tabla = document.createElement("table")
+        var tbody = document.createElement("tbody")
+    var tablaf = fil * col
+        for(var i = 0; i < fil; i++){
+    var filas = document.createElement("tr")
+        for(var j = 0; j < col; j++){   
+    var columnas = document.createElement("td") 
+    var txt = document.createTextNode(tablaf)
+    tablaf--
+    columnas.appendChild(txt)
+    filas.appendChild(columnas)
+}
+tbody.appendChild(filas)
+}
+tabla.appendChild(tbody)
+body.appendChild(tabla)
+tabla.setAttribute("border","1")
+}
+</script>
